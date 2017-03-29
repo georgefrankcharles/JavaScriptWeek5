@@ -58,10 +58,11 @@
     <a id="eyes_solid_btn">solid eyes</a>
     <a id="eyes_big_btn">big eyes</a>
     <a id="eyes_small_btn">small eyes</a>
-    <a>no right eye</a>
-    <a>happy mouth</a>
-    <a>sad mouth</a>
-    <a>reset face</a>
+    <a id="right_eye_btn">add right eye</a>
+    <a id="no_right_eye_btn">no right eye</a>
+    <a id="happy_mouth_btn">happy mouth</a>
+    <a id="sad_mouth_btn">sad mouth</a>
+    <a id="reset_btn">reset face</a>
   </div>
 
   <div id="face">
@@ -78,13 +79,15 @@
     var eye_right_y = 100;
 
     var eyes_big = false;
-    var eyes_small = false;
+
 
     // set initial positions
     document.getElementById('eye_left').style.left = eye_left_x + 'px';
     document.getElementById('eye_left').style.top = eye_left_y + 'px';
     document.getElementById('eye_right').style.left = eye_right_x + 'px';
     document.getElementById('eye_right').style.top = eye_right_y + 'px';
+    document.getElementById('mouth').style.top = 225 + 'px';
+    document.getElementById('mouth').style.left = 100 + 'px';
 
     // move eyes up event listener
     document.getElementById('eyes_up_btn').addEventListener('click', function() {
@@ -151,27 +154,104 @@
           eye_right_x -= 25;
           document.getElementById('eye_right').style.left = eye_right_x + 'px';
           eyes_big = true;
-          eyes_small = false;
+
         }
       }
     );
 
-    // move eyes small event listener
-    document.getElementById('eyes_small_btn').addEventListener('click', function() {
-      if (eyes_small == false) {
-          document.getElementById('eye_left').style.width = 20 + 'px';
+    // make eyes big event listener
+    document.getElementById('eyes_big_btn').addEventListener('click', function() {
+      if (eyes_big == false) {
+          document.getElementById('eye_left').style.width = 100 + 'px';
 
-          document.getElementById('eye_right').style.width = 20 + 'px';
-           //offset eyes so they stay center
-          eye_left_x += 15;
+          document.getElementById('eye_right').style.width = 100 + 'px';
+          //offset eyes so they stay center
+          eye_left_x -= 25;
           document.getElementById('eye_left').style.left = eye_left_x + 'px';
-          eye_right_x += 15;
+          eye_right_x -= 25;
           document.getElementById('eye_right').style.left = eye_right_x + 'px';
-          eyes_small = true;
-          eyes_big = false;
+          eyes_big = true;
+
         }
       }
     );
+
+    // make eyes small event listener
+    document.getElementById('eyes_small_btn').addEventListener('click', function() {
+      if (eyes_big == true) {
+          document.getElementById('eye_left').style.width = 50 + 'px';
+
+          document.getElementById('eye_right').style.width = 50 + 'px';
+          //offset eyes so they stay center
+          eye_left_x += 25;
+          document.getElementById('eye_left').style.left = eye_left_x + 'px';
+          eye_right_x += 25;
+          document.getElementById('eye_right').style.left = eye_right_x + 'px';
+          eyes_big = false;
+
+        }
+      }
+    );
+
+    // no right eye event listener
+    document.getElementById('no_right_eye_btn').addEventListener('click', function() {
+
+          document.getElementById('eye_right').style.width = 0 + 'px';
+
+      }
+    );
+
+    // add right eye event listener
+    document.getElementById('right_eye_btn').addEventListener('click', function() {
+      if (eyes_big == true) {
+          document.getElementById('eye_right').style.width = 100 + 'px';
+      }
+      if (eyes_big == false) {
+          document.getElementById('eye_right').style.width = 50 + 'px';
+        }
+      }
+    );
+
+
+    // sad face event listener
+    document.getElementById('sad_mouth_btn').addEventListener('click', function() {
+
+        document.getElementById('mouth').src = 'mouth_sad.svg';
+
+      }
+    );
+
+    // happy face event listener
+    document.getElementById('happy_mouth_btn').addEventListener('click', function() {
+
+        document.getElementById('mouth').src = 'mouth_happy.svg';
+
+      }
+    );
+
+    // reset event listener
+    document.getElementById('reset_btn').addEventListener('click', function() {
+
+        document.getElementById('mouth').src = 'mouth_happy.svg';
+        document.getElementById('eye_left').style.left = (eye_left_x - eye_left_x) + 100 + 'px';
+        document.getElementById('eye_left').style.top = (eye_left_y  - eye_left_y) + 100 + 'px';
+        document.getElementById('eye_right').style.left = (eye_right_x  - eye_right_x) + 250 + 'px';
+        document.getElementById('eye_right').style.top = (eye_right_y  - eye_right_y) + 100 + 'px';
+        document.getElementById('mouth').src = 'mouth_happy.svg';
+        document.getElementById('eye_left').src = 'eye_solid.svg';
+        document.getElementById('eye_right').src = 'eye_solid.svg';
+        document.getElementById('eye_left').style.width = 50 + 'px';
+        document.getElementById('eye_right').style.width = 50 + 'px';
+        eyes_big = false;
+
+
+      }
+    );
+
+
+
+
+
 
   </script>
 
