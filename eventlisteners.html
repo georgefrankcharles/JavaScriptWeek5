@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Event Listeners</title>
+    <meta charset="utf-8"/>
+
+  </head>
+
+
+
+  <body>
+
+    Kia Ora
+
+    <div id="hello_btn">
+      say hello
+    </div>
+
+    <script>
+
+    var x = 1;
+
+
+
+      document.getElementById('hello_btn').addEventListener('click', function () {
+          console.log('button has been clicked ' + x  + ' times');
+          x += 1;
+      });
+    </script>
+
+  </body>
+
+</html>
